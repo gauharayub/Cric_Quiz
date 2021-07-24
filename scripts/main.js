@@ -7,6 +7,7 @@ var ques = ["Which Indian bowler has taken 10 wickets in a Test match ?",
      "Who has been appointed ICC Cricket Committee  chairman for second time ?",
      "Which cricketer had scored highest individual score in ODI cricket ?"
 ];
+
 //array to store options of questions.....
 //answer with id 'j' is the corrrect answer.....
 var answer = ['<div class="option"><div class="sel" id="i">Ravi Ashwin</div> <div class="sel" id="j">Anil Kumble</div><div class="sel" id="k">Zaheer Khan</div></div>',
@@ -23,14 +24,17 @@ var content = $('.container');
 var totalques = ques.length;
 var correct=0;
 var wrong=0;
+
 //start function will display questions alongwith options...
 function start(questionNo){
 content.html('<div class="ques">'+ques[questionNo]+'</div>'+answer[questionNo]);
 content.append('<div><button class="next" onclick="loadnext();">NEXT</button></div>');
+
 $('#j').click(function(){
         correct++;
         score+=10;
 });
+
 $('.sel').click(function(){
         $(this).css('background-color','green');
         var x = $(this).attr('id');
@@ -44,7 +48,7 @@ $('.sel').click(function(){
 }
 
 function loadnext(){
-//on clicking right answer correct counter and score counter will get updated......
+        //on clicking right answer correct counter and score counter will get updated......
         questionNo++;
         if(questionNo<totalques-1){
                 start(questionNo);
@@ -59,8 +63,8 @@ function loadnext(){
         }
       
 }
+
 //event handler for start button... 
 $('.start').click(function(){
         start(questionNo);
 });
-
